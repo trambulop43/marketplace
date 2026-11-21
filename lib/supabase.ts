@@ -27,6 +27,7 @@ export type Listing = {
   email: string;
   category: string;
   image_url: string | null;
+  user_id?: string | null;
 };
 
 export type Message = {
