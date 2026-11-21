@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Auth from "../components/Auth";
 
 export const metadata: Metadata = {
   title: "Mini Marketplace",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a className="sell-link" href="/sell">
               + Sell something
             </a>
+            <Auth />
           </div>
         </header>
         {children}
