@@ -72,9 +72,11 @@ export default function SellPage() {
           .getPublicUrl(path);
         imageUrl = publicData.publicUrl;
       }
+      const { data: authData } = await supabase.auth.getUser();
       const { data, error: insertError } = await supabase
         .from("listings")
         .insert({
+          user_id: authData.user?.id ?? null,
           title: title.trim(),
           description: description.trim(),
           price: priceNum,
