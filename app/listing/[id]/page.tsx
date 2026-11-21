@@ -1,8 +1,11 @@
 import { notFound } from "next/navigation";
 import { supabase, formatPrice, type Listing } from "../../../lib/supabase";
 import MessageSeller from "../../../components/MessageSeller";
+import Chat from "../../../components/Chat";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
 
 export default async function ListingPage({
   params,
@@ -45,7 +48,8 @@ export default async function ListingPage({
           <p className="detail-desc">{listing.description}</p>
         </div>
       </article>
-      <MessageSeller listingId={listing.id} sellerEmail={listing.email} />
+      <Chat listingId={listing.id} ownerId={listing.user_id ?? null} />
+        <MessageSeller listingId={listing.id} sellerEmail={listing.email} />
     </main>
   );
 }
